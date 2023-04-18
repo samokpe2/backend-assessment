@@ -1,0 +1,9 @@
+{
+  // "extends": "google",
+  "parser": "@babel/eslint-parser",
+  "rules": {
+    "semi": "off",
+    "no-unused-vars": "error",
+    "space-in-parens": "error"
+  }
+}
