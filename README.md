@@ -1,41 +1,34 @@
-# GDS Node.js boilerplate
+# Tiiny Host Backend Assessment
 
-This is a skeleton Node.js app running on [Express] with [Nunjucks] as a template engine.
+This is a skeleton Node.js app running on [Express].
 
-It includes:
-- Grunt for compliation of sass/js
-- [GOV.UK Frontend]
-- [Browserify] with babelify and Nunjucksify
-- Mocha for testing
-- Middleware to set correlation headers
-- i18n language support
-- [Snyk]
-- [StandardJS] for linting
-- [nvm] (optional) for nodejs version
+## Instructions
 
-To get started clone the repo and run
+You task for this assessment is to complete the `/upload` api. The code for this is in `/app/aws/upload.js`.
 
-``` bash
-$ npm install
-$ npm start
+The upload api should take two parameters
+
+1. A zip file
+2. An email address
+
+The api should then extract the zip file and return a 200 JSON response 
+
+```javascript
+{
+    "fileCount": 0, // The number of files in the zip folder
+    "largestFile": "", // The size of the largest file
+    "email": "" // The email submitted in the request
+}
 ```
-(`npm install` might error about Snyk if it’s not set up but ignore for now)
 
-Then go to [http://localhost:3000/](http://localhost:3000/) to see it in action.
+For your convenience we have also added an `example.zip` file in the root of this repository.
 
-### Using nvm (optional)
-If you work across multiple Node.js projects there's a good chance they require different Node.js and npm versions.
+## How to submit your solution
 
-To enable this we use [nvm (Node Version Manager)](https://github.com/creationix/nvm) to switch between versions easily.
+Simply fork this repo and commit your solution to your forked repo. Then send us the link to your repo.
 
-1. [install nvm](https://github.com/creationix/nvm#installation)
-2. Run `nvm install` in the project directory (this will use [.nvmrc](/../../.nvmrc))
-3. Follow the steps above to install and start
+## Tips
 
-[Express]: https://expressjs.com/
-[Nunjucks]: https://mozilla.github.io/nunjucks/
-[Snyk]: https://snyk.io/
-[GOV.UK Frontend]: https://design-system.service.gov.uk/
-[Browserify]: http://browserify.org/
-[StandardJS]: https://standardjs.com/
-[nvm]: https://github.com/creationix/nvm
+- We rate clean, well-presented code very highly
+- Make sure to gracefully handle error scenarios
+- You can use whatever libraries you like

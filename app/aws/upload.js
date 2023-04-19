@@ -6,7 +6,8 @@ const upload = async (req, res) => {
       .status(200)
       .json({
         fileCount: 0,
-        largestFile: ''
+        largestFile: '',
+        email: ''
       })
   } catch (err) {
     res.sendStatus(500)
