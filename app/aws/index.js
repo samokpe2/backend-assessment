@@ -11,7 +11,7 @@ const paths = {
 };
 
 // Routing
-router.post("/upload", upload);
+router.post("/upload",  upload);
 
 // Export
 module.exports = {

@@ -6,6 +6,7 @@ const express = require("express");
 const argv = require("minimist")(process.argv.slice(2));
 const compression = require("compression");
 const cors = require("cors");
+const multer = require('multer');
 var useragent = require("express-useragent");
 const uuid = require('uuid');
 const pinoHttpLogger = require('pino-http')
@@ -27,13 +28,15 @@ const { logger, PinoLogger } = require('./app/utils/logger')
 
 // Global constants
 const unconfiguredApp = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8080;
 const { NODE_ENV } = process.env;
 
 function initialiseGlobalMiddleware(app) {
   app.use(compression());
-
+  app.use(multer().any()); 
+  
   if (process.env.DISABLE_REQUEST_LOGGING !== "true") {
+
     app.use(pinoHttpLogger({
       logger: PinoLogger,
       genReqId: req => req.headers['x-request-id'] || uuid(),
@@ -43,7 +46,7 @@ function initialiseGlobalMiddleware(app) {
       },
       serializers: {
         req(request) {
-          return {
+          return {            
             url: request.url,
             method: request.method,
             reqId: request.id,
@@ -107,6 +110,7 @@ function listen() {
  */
 function initialise() {
   console.log("## ENVIRONMENT ##", process.env.NODE_ENV);
+  
 
   const app = unconfiguredApp;
   app.disable("x-powered-by");
